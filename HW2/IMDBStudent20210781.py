@@ -19,6 +19,6 @@ def count_movies_by_genre(input_file, output_file):
             output.write(f"{genre} {count}\n")
 
 if __name__ == '__main__':
-    input_file = "movies_exp.txt"
+    input_file = "movie.dat"
     output_file = "movieoutput.txt"
     count_movies_by_genre(input_file, output_file)
