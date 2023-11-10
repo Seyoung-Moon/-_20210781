@@ -9,14 +9,17 @@ def find_day_stats(input_file, output_file):
             base, date, active_vehicles, trips = line.strip().split(',')
             day = date.split('/')[1]
             day_code = days[int(day) % 7]
-            if base not in result:
-                result[base] = []
-            result[base].append((day_code, active_vehicles, trips))
+            key = (base, day_code)
+
+            if key not in result:
+                result[key] = {'active_vehicles': 0, 'trips': 0}
+
+            result[key]['active_vehicles'] += int(active_vehicles)
+            result[key]['trips'] += int(trips)
 
     with open(output_file, 'w', encoding='utf-8') as output:
-        for base, data in result.items():
-            for entry in data:
-                output.write(f"{base},{entry[0]} {entry[1]},{entry[2]}\n")
+        for (base, day_code), data in result.items():
+            output.write(f"{base},{day_code} {data['active_vehicles']},{data['trips']}\n")
 
 if __name__ == '__main__':
     input_file = "uber_exp.txt"
