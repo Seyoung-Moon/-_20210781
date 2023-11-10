@@ -22,6 +22,6 @@ def find_day_stats(input_file, output_file):
             output.write(f"{base},{day_code} {data['active_vehicles']},{data['trips']}\n")
 
 if __name__ == '__main__':
-    input_file = "uber_exp.txt"
+    input_file = "uber.dat"
     output_file = "uberoutput.txt"
     find_day_stats(input_file, output_file)
